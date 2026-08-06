@@ -1,262 +1,213 @@
-# ASVH-001
+# NHS Ambient Scribing Verification Harness (ASVH)
 
-# NHS Ambient Scribing Runtime Verification Harness
-
-### Engineering deterministic runtime verification for AI-enabled ambient scribing
+**An Open Engineering Reference Implementation for Runtime Verification of AI-Generated Clinical Documentation**
 
 ---
 
-> **Engineering Reference Project**
->
-> ASVH demonstrates one implementation-independent approach to deterministic runtime verification for AI-enabled ambient scribing. It is intended to stimulate architectural discussion and does not represent NHS England guidance or policy.
+## Project Update – August 2026
+
+On **6 August 2026**, the **Health Services Safety Investigation Body (HSSIB)** announced a national patient safety investigation into the use of **Ambient Voice Technology (AVT)** within NHS hospitals.
+
+The investigation highlights growing national interest in the safe operational use of AI-assisted clinical documentation, including how organisations assure patient safety when AI-generated records become part of the permanent Electronic Patient Record (EPR).
+
+The **Ambient Scribing Verification Harness (ASVH)** was developed independently of this investigation and demonstrates one engineering approach to this challenge.
+
+Rather than evaluating how an AI model generates clinical documentation, ASVH demonstrates how an independent **Runtime Authority** can determine whether an AI-generated clinical record remains admissible for commitment immediately before execution.
+
+The project operationalises published NHS England guidance into deterministic Runtime Rules, evaluates those rules at runtime, and produces an evidential **Authority Receipt** recording the execution decision.
 
 ---
 
-## Overview
+# Purpose
 
-The **NHS Ambient Scribing Runtime Verification Harness (ASVH)** is an implementation-independent engineering reference demonstrating how NHS England guidance for AI-enabled ambient scribing can be transformed into deterministic runtime verification immediately before clinical documentation is committed to the Electronic Patient Record (EPR).
+ASVH demonstrates how published operational guidance can be transformed into deterministic runtime controls.
 
-The project does **not** implement an ambient scribing platform.
+The project provides an implementation-independent engineering reference showing how runtime verification can complement existing governance, assurance and clinical safety processes.
 
-Instead, it demonstrates how an independent Runtime Authority can evaluate whether delegated authority remains legitimately exercisable immediately before institutional consequence formation.
+It is intended to support discussion around:
 
-ASVH has been developed as a reference implementation for healthcare architects, NHS organisations, clinical safety teams, digital transformation leaders and ambient scribing suppliers interested in execution-time assurance.
-
----
-
-# Why ASVH?
-
-NHS England's guidance clearly establishes governance expectations for the safe deployment of AI-enabled ambient scribing.
-
-These include requirements relating to:
-
-- Clinical Safety
-- Governance
-- Human Review
-- Clinical Approval
-- Organisational Responsibility
-- Safe Deployment
-
-ASVH explores a complementary engineering question:
-
-> **How can an NHS organisation deterministically verify, immediately before AI-generated documentation is committed to the EPR, that execution should still proceed?**
-
-The project demonstrates one implementation-independent engineering approach to answering that question.
+- Runtime verification
+- Execution assurance
+- Evidential accountability
+- AI-enabled clinical documentation
+- Safe commitment of AI-generated records
 
 ---
 
-# Architectural Position
+# What ASVH Demonstrates
 
-ASVH is **not**:
+The project demonstrates:
 
-- An ambient scribing product
-- A governance framework
-- A clinical decision support system
-- An Electronic Patient Record
-- A replacement for clinician judgement
+- Decomposition of NHS England guidance into Runtime Rules
+- Deterministic runtime policy evaluation
+- Independent Runtime Authority
+- Runtime admissibility assessment
+- Execution Bind Point evaluation
+- Authority Receipt generation
+- Complete evidential traceability
+- Deterministic execution outcomes
 
-Instead, ASVH demonstrates an independent **Runtime Authority** operating at the **Execution Bind Point** immediately before consequence formation.
+The implementation intentionally focuses on runtime behaviour rather than AI model performance.
 
-```text
-Ambient Scribing Platform
-            │
-            ▼
-AI Generated Clinical Documentation
-            │
-            ▼
-     Clinician Review
-            │
-            ▼
-    Clinician Approval
-            │
-            ▼
-══════════════════════════════════════
-      Execution Bind Point
- Independent Runtime Authority
-══════════════════════════════════════
-            │
-            ▼
-     ALLOW
-   ESCALATE
-    REFUSE
-            │
-            ▼
- Commit Documentation to the EPR
+---
+
+# Engineering Philosophy
+
+Traditional governance answers questions such as:
+
+- Was the system approved?
+- Was it clinically assessed?
+- Was deployment authorised?
+
+ASVH demonstrates an additional runtime question:
+
+> **Should this AI-generated clinical record still be committed now?**
+
+This determination occurs immediately before consequence formation.
+
+The Runtime Authority evaluates current operational evidence and determines whether organisational authority remains sufficient for execution to proceed.
+
+---
+
+# Scope
+
+ASVH does **not**:
+
+- Perform clinical decision making
+- Diagnose patients
+- Assess AI model quality
+- Replace clinical judgement
+- Replace DCB0129 or DCB0160
+- Replace NHS England guidance
+
+Instead, it demonstrates how runtime verification may complement these existing governance processes.
+
+---
+
+# Architecture
+
+The reference implementation demonstrates:
+
+```
+NHS Guidance
+        │
+        ▼
+Guidance Decomposition
+        │
+        ▼
+Runtime Rules
+        │
+        ▼
+Runtime Authority
+        │
+        ▼
+Execution Bind Point
+        │
+        ▼
+Authority Receipt
+        │
+        ▼
+Electronic Patient Record
 ```
 
 ---
 
 # Repository Contents
 
-This repository contains the engineering artefacts supporting the ASVH reference project.
-
-| Document | Description |
-|-----------|-------------|
-| **ASVH-METH-001** | Runtime Requirements Engineering Methodology |
-| **ASVH-SPEC-001** | Runtime Authority Specification |
-| **ASVH-TRACE-001** | Guidance-to-Implementation Traceability |
-| **ASVH-ARCH-001** | Reference Architecture |
-| **Sample Authority Receipts** | Example runtime evidence outputs |
-| **Example Runtime Decisions** | Sample deterministic evaluations |
+| Document | Purpose |
+|----------|---------|
+| ASVH-METH-001 | Engineering methodology |
+| ASVH-SPEC-001 | Runtime Rule specification |
+| ASVH-TRACE-001 | Traceability matrix |
+| ASVH-ARCH-001 | Reference architecture |
+| ASVH-001 | Reference implementation |
+| VERIFY-001 | Implementation verification report |
 
 ---
 
-# Engineering Principles
+# Current Relevance
 
-ASVH has been engineered around the following principles:
+The HSSIB investigation reflects an important industry shift.
 
-- Implementation Independence
-- Deterministic Runtime Evaluation
-- Independent Runtime Authority
-- Guidance-Derived Engineering
-- Complete Traceability
-- Explainable Execution Decisions
-- Evidential Accountability
-- Separation of Governance from Runtime Execution
+The conversation is moving beyond:
 
----
+> **Can AI generate clinical documentation?**
 
-# Runtime Authority
+towards:
 
-Within ASVH, the Runtime Authority is responsible for determining whether delegated authority remains legitimately exercisable immediately before documentation is committed to the Electronic Patient Record.
+> **How can organisations demonstrate that AI-generated documentation remained safe and admissible at the moment it became part of the clinical record?**
 
-Runtime Authority **does not replace**:
-
-- Governance
-- Clinical Judgement
-- Organisational Approval
-- Human Review
-- Existing Ambient Scribing Platforms
-
-Instead, it evaluates the current runtime context to determine whether execution remains admissible.
-
-Possible outcomes are:
-
-| Decision | Meaning |
-|-----------|---------|
-| **ALLOW** | Runtime conditions remain satisfied and execution may proceed. |
-| **ESCALATE** | Runtime conditions require authorised human intervention before execution. |
-| **REFUSE** | Execution is not currently admissible and must not proceed. |
+ASVH contributes to this discussion by demonstrating one possible runtime engineering approach.
 
 ---
 
-# Engineering Lifecycle
+# Relationship to NHS Guidance
 
-ASVH follows a deterministic engineering lifecycle:
+ASVH is derived from published NHS England operational guidance.
 
-```text
-NHS England Guidance
-            │
-            ▼
-Guidance Decomposition
-            │
-            ▼
-Runtime Requirements
-            │
-            ▼
-Runtime Rules
-            │
-            ▼
-Runtime Authority
-            │
-            ▼
-Execution Bind Point
-            │
-            ▼
-Authority Receipt
-```
+The project:
 
-Every runtime decision is traceable back to documented engineering requirements derived from published guidance.
+- extracts runtime conditions
+- converts narrative guidance into deterministic Runtime Rules
+- evaluates those rules immediately before execution
+- records evidential proof of the runtime decision
+
+This work does not reinterpret NHS policy.
+
+It demonstrates one possible engineering implementation.
 
 ---
 
-# Intended Audience
+# Open Engineering Reference
 
-ASVH has been developed for:
+ASVH is published as an open engineering reference implementation.
 
-- NHS Trusts
-- Ambient Scribing Suppliers
-- Clinical Safety Officers
-- CNIOs
-- CCIOs
-- Chief Digital Information Officers
-- Enterprise Architects
-- Healthcare AI Researchers
-- AI Governance Professionals
-- Digital Transformation Leaders
+Its purpose is to encourage discussion around:
 
----
+- runtime verification
+- evidential accountability
+- implementation patterns
+- interoperable runtime architectures
+- patient safety
 
-# Project Status
-
-Current public release includes:
-
-- ✅ Runtime Requirements Engineering Methodology
-- ✅ Runtime Authority Specification
-- ✅ Guidance-to-Implementation Traceability
-- ✅ Reference Architecture
-- ✅ Representative Runtime Evidence
-- ✅ Sample Runtime Decisions
-
-The reference implementation continues to evolve as additional healthcare scenarios and runtime rules are evaluated.
+The project is implementation-independent and intended to complement existing NHS governance frameworks.
 
 ---
 
-# Relationship to NHS England Guidance
+# Future Publications
 
-ASVH is an engineering reference project inspired by publicly available NHS England guidance for AI-enabled ambient scribing.
+Companion publications include:
 
-It should not be interpreted as NHS England policy, certification or endorsement.
+- ASVH-METH-001
+- ASVH-SPEC-001
+- ASVH-TRACE-001
+- ASVH-ARCH-001
+- VERIFY-001
 
-The project demonstrates one possible implementation-independent approach to engineering deterministic runtime verification within healthcare AI workflows.
+Planned publications:
+
+- **ASVH Insight Note 001 – HSSIB's Investigation into Ambient Voice Technology: Why Runtime Verification Matters**
 
 ---
 
 # Contributing
 
-Constructive feedback from:
+Technical discussion and constructive feedback are welcome.
 
-- NHS Organisations
-- Ambient Scribing Suppliers
-- Clinical Safety Professionals
-- Healthcare Architects
-- Researchers
-
-is welcomed.
-
-If your organisation is deploying AI-enabled ambient scribing and would like to discuss the engineering approach demonstrated by ASVH, please get in touch.
-
----
-
-# Related FlowSignal Projects
-
-- **ORAI** — Open Runtime Authority Interface
-- **IRAI** — Independent Runtime Authority Infrastructure
-- **FlowSignal Runtime Authority**
-- **Execution Bind Point Architecture**
+The objective of ASVH is to encourage open engineering discussion around runtime assurance for AI-enabled clinical documentation.
 
 ---
 
 # Licence
 
-**© FlowSignal™**
+This repository is published for research, engineering discussion and interoperability.
 
-This repository is published as an engineering reference project for architectural review, discussion and research.
-
-See the accompanying licence for usage terms.
-
----
-
-## Citation
-
-If referencing this work, please cite:
-
-> **ASVH-001 — NHS Ambient Scribing Runtime Verification Harness**  
-> FlowSignal™ Engineering Reference Project  
-> Version 1.0
+It is not a clinical product and should not be interpreted as clinical or regulatory guidance.
 
 ---
 
 **FlowSignal™**
 
-*Independent Runtime Authority for AI Execution.*
+*Independent Runtime Authority for AI Execution*
+
+**Execute with Authority. Defend with Evidence.**
