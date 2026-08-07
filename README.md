@@ -10,11 +10,13 @@ On **6 August 2026**, the **Health Services Safety Investigation Body (HSSIB)** 
 
 The investigation highlights growing national interest in the safe operational use of AI-assisted clinical documentation, including how organisations assure patient safety when AI-generated records become part of the permanent Electronic Patient Record (EPR).
 
-The **Ambient Scribing Verification Harness (ASVH)** was developed independently of this investigation and demonstrates one engineering approach to this challenge.
+The Ambient Scribing Verification Harness (ASVH) was developed prior to the HSSIB announcement and demonstrates one implementation-independent engineering approach to runtime verification immediately before AI-generated clinical documentation is committed to the Electronic Patient Record (EPR).
 
 Rather than evaluating how an AI model generates clinical documentation, ASVH demonstrates how an independent **Runtime Authority** can determine whether an AI-generated clinical record remains admissible for commitment immediately before execution.
 
 The project operationalises published NHS England guidance into deterministic Runtime Rules, evaluates those rules at runtime, and produces an evidential **Authority Receipt** recording the execution decision.
+
+The HSSIB investigation is expected to conclude during 2027. ASVH does not anticipate its findings or propose regulatory recommendations. Instead, it provides an open engineering reference implementation intended to support discussion around runtime verification, evidential accountability and execution assurance for AI-enabled clinical documentation.
 
 ---
 
