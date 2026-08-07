@@ -4,7 +4,7 @@
 
 ---
 
-## Project Update – August 2026
+## Current Context – August 2026
 
 On **6 August 2026**, the **Health Services Safety Investigation Body (HSSIB)** announced a national patient safety investigation into the use of **Ambient Voice Technology (AVT)** within NHS hospitals.
 
