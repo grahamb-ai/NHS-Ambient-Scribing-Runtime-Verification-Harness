@@ -1,0 +1,24 @@
+name: AT-EPR-001 Direct EPR Mutation Bypass
+
+on:
+  push:
+    branches:
+      - at-epr-001-direct-mutation-bypass
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  direct-mutation-bypass:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pytest
+        run: python -m pip install pytest
+      - name: Run frozen AT-EPR-001 challenge
+        working-directory: harness
+        run: pytest -q test_at_epr_001_direct_mutation.py
